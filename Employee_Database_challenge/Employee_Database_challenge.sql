@@ -53,6 +53,20 @@ WHERE (de.to_date = '9999-01-01')
 AND (e.birth_date BETWEEN '1965-01-01' AND '1965-12-31')
 ORDER BY e.emp_no;
 
-
-
+--Additional queries to provide more insight
+SELECT * FROM mentorship_eligibility;
+SELECT COUNT (title), title
+FROM mentorship_eligibility
+GROUP BY title
+ORDER BY count DESC;
+	
+SELECT s.emp_no,
+	s.salary,
+	m.first_name,
+	m.last_name,
+	m.title
+INTO mentors_salary
+FROM salaries as s
+INNER JOIN mentorship_eligibility as m
+ON (s.emp_no = m.emp_no);
 	
